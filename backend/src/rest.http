@@ -1,0 +1,29 @@
+# REST Tests
+// https://omnistack-mentalbox.herokuapp.com/
+@hostname = localhost
+@port = 3333
+# @host = {{hostname}}:{{port}}
+@host = omnistack-mentalbox.herokuapp.com
+@contentType = application/json
+
+### Post Boxes
+POST https://{{host}}/boxes HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Box Teste"
+}
+
+### Send File
+POST http://{{host}}/boxes/5cba4c15cba2e80017e5fc53/files HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="logo.png"
+Content-Type: image/png
+
+< ./logo.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Get Boxes
+GET http://{{host}}/boxes/5cba4c15cba2e80017e5fc53 HTTP/1.1
